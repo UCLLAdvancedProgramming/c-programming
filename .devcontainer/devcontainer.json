@@ -1,0 +1,14 @@
+{
+	"name": "Alpine",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-vscode.cpptools-extension-pack",
+				"EditorConfig.EditorConfig"
+			]
+		}
+	}
+}
