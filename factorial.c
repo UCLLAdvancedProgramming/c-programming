@@ -5,7 +5,7 @@
 void factorial(mpz_t result, long n)
 {
     mpz_init_set_si(result, 1);
-    for (long i = 1; i < n; ++i) {
+    for (long i = 1; i <= n; ++i) {
         mpz_mul_si(result, result, i);
     }
 }
