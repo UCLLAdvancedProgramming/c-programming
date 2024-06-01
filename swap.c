@@ -2,7 +2,9 @@
 
 void swap(int* left, int* right)
 {
-    // TODO: swap the values
+    int temp = *left;
+    *left = *right;
+    *right = temp;
 }
 
 int main(void)
@@ -10,7 +12,7 @@ int main(void)
     int i = 2;
     int j = 5;
 
-    // TODO: swap i and j using the swap function
+    swap(&i, &j);
 
     printf("i = %d, j = %d\n", i, j);
 }

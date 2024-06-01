@@ -10,14 +10,20 @@ bool read_number(long* i) {
     // getline allocates an array of chars
     ssize_t result = getline(&line, &length, stdin);
     if (result == -1) {
+        // Fix memory leak
+        free(line);
         // Could not get line
         return false;
     } else {
         char *end = NULL;
         *i = strtol(line, &end, 10);
         if (*end == '\n') {
+            // Fix memory leak
+            free(line);
             return true;
         } else {
+            // Fix memory leak
+            free(line);
             return false;
         }
     }
@@ -38,7 +44,9 @@ void read_numbers(long* numbers, long nb_numbers) {
 
 long sum(long* numbers, long nb_numbers) {
     long result = 0;
-    for (long i = 0; i <= nb_numbers; ++i) {
+    // Fix array out of bounds access
+    // for (long i = 0; i <= nb_numbers; ++i) {
+    for (long i = 0; i < nb_numbers; ++i) {
         result += numbers[i];
     }
     return result;
@@ -65,5 +73,6 @@ int main(void) {
     printf("Sum: %ld\n", sum(numbers, nb_numbers));
 
     free(numbers);
-    free(numbers);
+    // Fixes double free
+    // free(numbers);
 }
